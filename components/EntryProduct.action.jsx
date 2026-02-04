@@ -3,7 +3,7 @@ import Product from "@/app/model/Products";
 import DBConnection from "@/config/config";
 import cloudinary from "@/lib/Cloudinary";
 import EcommerceUpload from "@/lib/ecommerce-upload";
-import { FindDiscountCategory } from "@/run";
+import { FindDiscountCategory } from "@/lib/DiscountMapping/FindDiscountCategory";
 import { revalidatePath } from "next/cache";
 import React from "react";
 
@@ -14,9 +14,12 @@ const EntryProduct = async (formData) => {
   const ProductImage = formData.getAll("ProductImage");
   const ProductDescription = formData.get("ProductDescription");
   const ProductClassification = formData.get("ProductClassification");
-  const BasePrice = formData.get("BasePrice");
+  const BasePrice = Number(formData.get("BasePrice"));
   const discountedPrice = formData.get("discountedPrice");
-  const discountPercentage = Number(formData.get("discountPercentage"));
+  // const discountPercentage = Number(formData.get("discountPercentage"));
+  const getCategoryDetail = await FindDiscountCategory(ProductClassification);
+  const categoryDiscount = getCategoryDetail?.discountPercentage;
+  console.log("This is categoryDisconunt", categoryDiscount);
   console.log(
     name,
     ProductImage,
@@ -24,14 +27,12 @@ const EntryProduct = async (formData) => {
     ProductClassification,
     BasePrice,
     discountedPrice,
-    discountPercentage,
+    categoryDiscount,
     "These are data",
   );
-  // const getCategoryDetail = await FindDiscountCategory(ProductClassification);
-  // const categoryDiscount = getCategoryDetail?.discountPercentage ?? 0;
   const NewdiscountedPrice =
-    discountPercentage > 0
-      ? Math.floor(BasePrice * (1 - discountPercentage / 100))
+    categoryDiscount > 0
+      ? Number(Math.floor(BasePrice * (1 - categoryDiscount / 100)))
       : BasePrice;
   try {
     await DBConnection();
@@ -46,7 +47,7 @@ const EntryProduct = async (formData) => {
       ProductClassification,
       BasePrice,
       discountedPrice: NewdiscountedPrice,
-      discountPercentage: discountPercentage,
+      discountPercentage: categoryDiscount,
     });
     if (!product) {
       throw new Error("No product found");
@@ -61,11 +62,11 @@ const EntryProduct = async (formData) => {
         ProductClassification: product.ProductClassification,
         BasePrice,
         discountedPrice,
-        discountPercentage,
+        // discountPercentage,
       },
     };
   } catch (error) {
-    console.log(error.message);
+    console.error("DB save error", error);
     return {
       status: 404,
       message: "error occured (internal server)",

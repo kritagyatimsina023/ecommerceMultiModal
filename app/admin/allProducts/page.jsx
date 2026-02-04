@@ -5,7 +5,7 @@ import React from "react";
 
 const AllProducts = async () => {
   const data = await FetchProducts();
-  console.log("this is data", data);
+  // console.log("this is data", data);
   return (
     <section className="min-h-screen flex justify-center">
       <div className=" mt-8 ">

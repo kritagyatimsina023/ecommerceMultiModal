@@ -53,7 +53,6 @@ const CardComponets = ({ productData }) => {
           sizes=""
           className="object-cover transition-all duration-300"
         />
-
         <button
           onClick={prevImage}
           className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-1 rounded-full"
