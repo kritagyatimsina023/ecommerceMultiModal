@@ -76,10 +76,18 @@ const CardComponets = ({ productData }) => {
         </div>
         <div className="flex  justify-between  items-center  mt-3">
           <div className="flex flex-col ">
-            <p className="font-bold line-through text-neutral-400">
-              Rs {productData.BasePrice}
-            </p>
-            <p className="font-semibold">Rs {productData.discountedPrice}</p>
+            {productData.BasePrice === productData.discountedPrice ? (
+              <p className="font-semibold">Rs {productData.BasePrice}</p>
+            ) : (
+              <>
+                <p className="font-bold line-through text-neutral-400">
+                  Rs {productData.BasePrice}
+                </p>
+                <p className="font-semibold">
+                  Rs {productData.discountedPrice}
+                </p>
+              </>
+            )}
           </div>
           <button className="border border-green-800 px-4 py-1 rounded-full text-green-800">
             Add to Cart

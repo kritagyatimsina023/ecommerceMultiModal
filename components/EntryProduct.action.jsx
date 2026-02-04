@@ -17,8 +17,10 @@ const EntryProduct = async (formData) => {
   const BasePrice = Number(formData.get("BasePrice"));
   const discountedPrice = formData.get("discountedPrice");
   // const discountPercentage = Number(formData.get("discountPercentage"));
+  const isDiscount = formData.get("discountMode");
   const getCategoryDetail = await FindDiscountCategory(ProductClassification);
-  const categoryDiscount = getCategoryDetail?.discountPercentage;
+  const categoryDiscount =
+    isDiscount === "Discount" ? getCategoryDetail?.discountPercentage : 0;
   console.log("This is categoryDisconunt", categoryDiscount);
   console.log(
     name,
@@ -28,6 +30,7 @@ const EntryProduct = async (formData) => {
     BasePrice,
     discountedPrice,
     categoryDiscount,
+    isDiscount,
     "These are data",
   );
   const NewdiscountedPrice =

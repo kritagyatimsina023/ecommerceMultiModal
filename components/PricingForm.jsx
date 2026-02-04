@@ -22,7 +22,7 @@ const PricingForm = () => {
     }
     setDiscounted(calculateDiscount(priceVal, dicoundPercent));
     // if (!isNaN(priceVal)) {
-    //   const dicountVal =
+    //   const dicountVal =.
     //     priceVal *
     //     (1 - Number(process.env.NEXT_PUBLIC_DISCOUNT_PERCENTAGE) / 100);
     //   setDiscounted(dicountVal);
@@ -76,6 +76,13 @@ const PricingForm = () => {
             className="text-neutral-500 labels flex items-center gap-3"
           >
             Discount Type
+            <input
+              name="discountMode"
+              value={isDiscount ? "Discount" : "NoDiscount"}
+              type="text"
+              readOnly
+              className="hidden"
+            />
             <div
               onClick={() => setIsDiscount(!isDiscount)}
               className={`relative flex items-center w-16 h-7 rounded-full transition-colors duration-300
