@@ -1,0 +1,2 @@
+srvNode = mongodb+srv://kritagyatimsina_db_user:HeW4meBpfMuPQTcO@cluster0.n0sjr0o.mongodb.net/?appName=Cluster0  
+srvCompass = mongodb+srv://kritagyatimsina_db_user:HeW4meBpfMuPQTcO@cluster0.n0sjr0o.mongodb.net/

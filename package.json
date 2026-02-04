@@ -9,9 +9,18 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "cloudinary": "^2.9.0",
+    "gsap": "^3.14.2",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^0.563.0",
+    "mongodb": "^7.0.0",
+    "mongoose": "^9.1.5",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-icons": "^5.5.0",
+    "react-responsive": "^10.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
