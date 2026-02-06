@@ -14,5 +14,17 @@ export async function FindDiscountCategory(ProductClassification) {
   const classification = ProductCategory.find(
     (item, idx) => item.name === ProductClassification,
   );
-  console.log("This is common classification", classification);
+  // console.log("This is common classification", classification);
 }
+
+const currentDate = Date.now();
+const dataObj = new Date(currentDate);
+// console.log("This is current date", dataObj);
+// const formatDate = currentDate.toLocaleDateString("en-US", {
+//   year: "numeric",
+//   month: "long",
+//   day: "numeric",
+// });
+// console.log(formatDate);
+const min = dataObj.getFullYear();
+console.log(min);

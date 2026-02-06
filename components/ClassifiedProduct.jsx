@@ -9,7 +9,7 @@ const ClassifiedProduct = () => {
   const [productType, setProductType] = useState("");
   useEffect(() => {
     if (state) {
-      console.log(state.data);
+      console.log("Client data", state);
     }
   }, [state]);
   return (
@@ -41,14 +41,14 @@ const ClassifiedProduct = () => {
       <h1 className="font-bold text-4xl uppercase">
         {state?.data?.[0]?.ProductClassification}
       </h1>
-      {state?.data.length >= 0 ? (
+      {state?.data.length > 0 ? (
         <div className="grid grid-cols-1 relative md:grid-cols-2 lg:grid-cols-3 justify-center gap-8 mt-4">
           {state?.data?.map((item, idx) => (
             <ClassifiedCard key={idx} data={item} />
           ))}
         </div>
       ) : (
-        <div>
+        <div className="flex items-center justify-center  h-[50vh] ">
           <h1>No Product Found</h1>
         </div>
       )}

@@ -1,5 +1,5 @@
 import { Clock10 } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 
 const ClassifiedCard = ({ data }) => {
   return (
@@ -20,8 +20,8 @@ const ClassifiedCard = ({ data }) => {
       </div>
       <div className="px-6 flex flex-col gap-8">
         <div className="py-4">
-          <h1 className="font-bold text-xl">Best View in NewYork city</h1>
-          <p className="text-neutral-400">The city that never sleeps</p>
+          <h1 className="font-bold text-xl">{data.name}</h1>
+          <p className="text-neutral-400">{data.ProductDescription}</p>
         </div>
         <div className="flex items-center gap-1 py-9  w-fit">
           <Clock10 />
